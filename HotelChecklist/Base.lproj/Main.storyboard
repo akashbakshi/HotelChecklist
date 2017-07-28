@@ -1,26 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HotelChecklist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6US-bT-Nyg">
+                                <rect key="frame" x="20" y="361.5" width="728" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="z4U-KE-vTb"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JX-Wn-tfD">
+                                <rect key="frame" x="20" y="464.5" width="728" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="zkj-N7-YjH"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keB-JX-BSj">
+                                <rect key="frame" x="321.5" y="715" width="125" height="50"/>
+                                <color key="backgroundColor" red="0.39215686274509803" green="1" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="xgg-XI-bqh"/>
+                                    <constraint firstAttribute="height" constant="50" id="zGE-gh-H10"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv6-6f-bD5">
+                                <rect key="frame" x="363" y="238" width="84" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.96369977678571428" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.012181455569744941" green="0.0" blue="0.46294122409326421" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="6US-bT-Nyg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4pI-NF-C3S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6US-bT-Nyg" secondAttribute="trailing" id="BlO-gS-WrA"/>
+                            <constraint firstItem="3JX-Wn-tfD" firstAttribute="top" secondItem="6US-bT-Nyg" secondAttribute="bottom" constant="8" id="Bxt-Dr-Onr"/>
+                            <constraint firstItem="keB-JX-BSj" firstAttribute="top" secondItem="3JX-Wn-tfD" secondAttribute="bottom" constant="155.5" id="Dvh-sM-hOs"/>
+                            <constraint firstItem="3JX-Wn-tfD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LDb-Vq-XUm"/>
+                            <constraint firstItem="3JX-Wn-tfD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R82-7R-MK1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3JX-Wn-tfD" secondAttribute="trailing" id="UMB-bM-O02"/>
+                            <constraint firstItem="keB-JX-BSj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eOu-qi-lez"/>
+                            <constraint firstItem="6US-bT-Nyg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qcM-Pc-1wo"/>
+                            <constraint firstItem="3JX-Wn-tfD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xrX-V4-pph"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnSubmit" destination="keB-JX-BSj" id="v0x-t1-96Y"/>
+                        <outlet property="inspectorPicker" destination="6US-bT-Nyg" id="PYY-E4-VJR"/>
+                        <outlet property="roomPicker" destination="3JX-Wn-tfD" id="jbv-g3-AT0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-98.4375" y="123.63281249999999"/>
         </scene>
     </scenes>
 </document>

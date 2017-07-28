@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		B83FD5AB1EEDC86B00D61BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83FD5AA1EEDC86B00D61BF3 /* AppDelegate.swift */; };
 		B83FD5AD1EEDC86B00D61BF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83FD5AC1EEDC86B00D61BF3 /* ViewController.swift */; };
-		B83FD5B01EEDC86B00D61BF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83FD5AE1EEDC86B00D61BF3 /* Main.storyboard */; };
 		B83FD5B21EEDC86B00D61BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B83FD5B11EEDC86B00D61BF3 /* Assets.xcassets */; };
 		B83FD5B51EEDC86B00D61BF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83FD5B31EEDC86B00D61BF3 /* LaunchScreen.storyboard */; };
 		B83FD5C01EEDC86B00D61BF3 /* HotelChecklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83FD5BF1EEDC86B00D61BF3 /* HotelChecklistTests.swift */; };
 		B83FD5CB1EEDC86B00D61BF3 /* HotelChecklistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83FD5CA1EEDC86B00D61BF3 /* HotelChecklistUITests.swift */; };
+		B83FD5D91EEDFBB600D61BF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83FD5D81EEDFBB600D61BF3 /* Main.storyboard */; };
+		B8626ED71EF1716000EA6F24 /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8626ED61EF1716000EA6F24 /* ChecklistView.swift */; };
+		B89B06071EFDBC5800A052E7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89B06061EFDBC5800A052E7 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 		B83FD5A71EEDC86B00D61BF3 /* HotelChecklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelChecklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83FD5AA1EEDC86B00D61BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B83FD5AC1EEDC86B00D61BF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B83FD5AF1EEDC86B00D61BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B83FD5B11EEDC86B00D61BF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B83FD5B41EEDC86B00D61BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B83FD5B61EEDC86B00D61BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +48,9 @@
 		B83FD5C61EEDC86B00D61BF3 /* HotelChecklistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelChecklistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83FD5CA1EEDC86B00D61BF3 /* HotelChecklistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelChecklistUITests.swift; sourceTree = "<group>"; };
 		B83FD5CC1EEDC86B00D61BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B83FD5D81EEDFBB600D61BF3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B8626ED61EF1716000EA6F24 /* ChecklistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		B89B06061EFDBC5800A052E7 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,12 @@
 			children = (
 				B83FD5AA1EEDC86B00D61BF3 /* AppDelegate.swift */,
 				B83FD5AC1EEDC86B00D61BF3 /* ViewController.swift */,
-				B83FD5AE1EEDC86B00D61BF3 /* Main.storyboard */,
 				B83FD5B11EEDC86B00D61BF3 /* Assets.xcassets */,
 				B83FD5B31EEDC86B00D61BF3 /* LaunchScreen.storyboard */,
 				B83FD5B61EEDC86B00D61BF3 /* Info.plist */,
+				B83FD5D81EEDFBB600D61BF3 /* Main.storyboard */,
+				B8626ED61EF1716000EA6F24 /* ChecklistView.swift */,
+				B89B06061EFDBC5800A052E7 /* SettingsView.swift */,
 			);
 			path = HotelChecklist;
 			sourceTree = "<group>";
@@ -235,9 +241,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B83FD5D91EEDFBB600D61BF3 /* Main.storyboard in Resources */,
 				B83FD5B51EEDC86B00D61BF3 /* LaunchScreen.storyboard in Resources */,
 				B83FD5B21EEDC86B00D61BF3 /* Assets.xcassets in Resources */,
-				B83FD5B01EEDC86B00D61BF3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8626ED71EF1716000EA6F24 /* ChecklistView.swift in Sources */,
+				B89B06071EFDBC5800A052E7 /* SettingsView.swift in Sources */,
 				B83FD5AD1EEDC86B00D61BF3 /* ViewController.swift in Sources */,
 				B83FD5AB1EEDC86B00D61BF3 /* AppDelegate.swift in Sources */,
 			);
@@ -299,14 +307,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B83FD5AE1EEDC86B00D61BF3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B83FD5AF1EEDC86B00D61BF3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B83FD5B31EEDC86B00D61BF3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -516,6 +516,7 @@
 				B83FD5D11EEDC86B00D61BF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B83FD5D21EEDC86B00D61BF3 /* Build configuration list for PBXNativeTarget "HotelChecklistTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +525,7 @@
 				B83FD5D41EEDC86B00D61BF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B83FD5D51EEDC86B00D61BF3 /* Build configuration list for PBXNativeTarget "HotelChecklistUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +534,7 @@
 				B83FD5D71EEDC86B00D61BF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
