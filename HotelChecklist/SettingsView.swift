@@ -19,6 +19,7 @@ class SettingsView : ViewController,UITableViewDelegate,UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         config.dataSource = self
+        nameRoomText.attributedPlaceholder = NSAttributedString(string: nameRoomText.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.white])
     }
     
     @IBAction func onOptionChange(_ sender: UISegmentedControl) {
@@ -90,13 +91,41 @@ class SettingsView : ViewController,UITableViewDelegate,UITableViewDataSource{
         // on delete function deletes values
         let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: config)
         let indexPath = config.indexPathForRow(at: buttonPosition)?.row
-
-        inspectorData.remove(at: indexPath!)
+        
         
         let defaults = UserDefaults.standard
-        defaults.set((inspectorData.count-1), forKey: "inspectorCount")
-        defaults.synchronize()
+        if optionSegment.selectedSegmentIndex == 0{
+            inspectorData.remove(at: (indexPath!+1))
+            defaults.set((inspectorData.count-1), forKey: "inspectorCount") // update the count for the number of elements in the array
+            defaults.synchronize()
+            for i in 0...(inspectorData.count-1){
+                defaults.set(inspectorData[i], forKey: "inspector"+String(i)) // store the new value in the ipads storage with the special key being inspector2, 2 being the index of the value
+                defaults.synchronize()
+            }
+            
+        }
+        if optionSegment.selectedSegmentIndex == 1{
+            
+            roomData.remove(at: (indexPath!+1))
+            defaults.set((roomData.count-1), forKey: "roomCount")
+            defaults.synchronize()
+            
+            for i in 0...(roomData.count-1){
+                defaults.set(roomData[i], forKey: "room"+String(i))
+                defaults.synchronize()
+            }
+        }
         
+        if optionSegment.selectedSegmentIndex == 2{
+            housekeeper.remove(at: (indexPath!+1))
+            defaults.set((housekeeper.count-1), forKey: "housekeeperCount")
+            defaults.synchronize()
+            
+            for i in 0...(housekeeper.count-1){
+                defaults.set(housekeeper[i], forKey: "housekeeper"+String(i))
+                defaults.synchronize()
+            }
+        }
         config.reloadData()
     }
     

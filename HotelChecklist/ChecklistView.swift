@@ -10,7 +10,17 @@ import Foundation
 import UIKit
 import MessageUI
 
-class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
+class ChecklistView : ViewController,MFMailComposeViewControllerDelegate,UITableViewDelegate,UITableViewDataSource{
+    /*!
+     @method     messageComposeViewController:didFinishWithResult:
+     @abstract   Delegate callback which is called upon user's completion of message composition.
+     @discussion This delegate callback will be called when the user completes the message composition.
+     How the user chose to complete this task will be given as one of the parameters to the
+     callback.  Upon this call, the client should remove the view associated with the controller,
+     typically by dismissing modally.
+     @param      controller   The MFMessageComposeViewController instance which is returning the result.
+     @param      result       MessageComposeResult indicating how the user chose to complete the composition process.
+     */
     
     @IBOutlet weak var segmentTask: UISegmentedControl!
     
@@ -31,10 +41,18 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
     
     var totalBedroomScore : Int = 0 // used to store final score for bedroom
     var totalBathroomScore: Int = 0 // used to store final score for bathroom
+    var selHousekeepr: Int = 0
     
+    var email:MFMailComposeViewController!
+    
+    
+
     @IBAction func ChangedTask(_ sender: UISegmentedControl) {
         checklist.reloadData() // reloads the data everytime you switch tabs
     }
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +74,7 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
     }
     
     override func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+         selHousekeepr = row
     }
     
     override func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -65,22 +83,48 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
       
     }
     
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate
-            mail.setToRecipients(["akash1996@hotmail.com"])
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+    
+    
+    @IBAction func onCancel(_ sender: UIButton) {
+        selInspector = 0
+        selRoom = 0
+        let mainStory = UIStoryboard(name: "Main", bundle: nil)
+        let mainView = mainStory.instantiateViewController(withIdentifier: "start") as! ViewController
+        self.present(mainView, animated: true, completion: nil)
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        print("kaboom3")
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        
+        print("kaboom")
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    @IBAction func submitEmail(_ sender: UIButton) {
+        
+        if selHousekeepr != 0{
+        email = MFMailComposeViewController()
+            email.delegate = self as? UINavigationControllerDelegate
+        email.mailComposeDelegate = self
+        email.setSubject("Inspection score")
+        email.setMessageBody("Hi, the score for Housekeeper \(housekeeper[selHousekeepr]) cleaning room number \(roomData[selRoom]) is \(totalBedroomScore) points for the bedroom and \(totalBathroomScore) points for the bathroom. Inspected by, \n \(inspectorData[selInspector])", isHTML: false)
+        email.setToRecipients(["gabriel.vidican@ottawamarriott.com"]) // the recipient email address
             
-            present(mail, animated: true)
-        } else {
-            // show failure alert
+        if MFMailComposeViewController.canSendMail() {
+            present(email, animated: true, completion: nil)
+            
+            print("kaboom")
+        }
         }
     }
-
-    @IBAction func submitEmail(_ sender: UIButton) {
-        sendEmail() 
-    }
+    
     
     //tableview functions
     @IBAction func pressedCheckbox(_ sender: UIButton) {
@@ -92,7 +136,7 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
                 // if the index of the tab is 0 which means its on bedroom subtract the task's from the total
                 let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: checklist)
                 let indexPath = checklist.indexPathForRow(at: buttonPosition)?.row
-                totalBedroomScore -= bedroomValue[(indexPath)!]!
+                
                 bedroomSelected[indexPath!] = 0
             }
             if(segmentTask.selectedSegmentIndex == 1){
@@ -100,7 +144,7 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
                 let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: checklist)
                 let indexPath = checklist.indexPathForRow(at: buttonPosition)?.row
                 totalBathroomScore -= bathroomValue[(indexPath)!]!
-                bathroomValue[indexPath!] = 0
+                bathroomSelected[indexPath!] = 0
             }
         }
         else{
@@ -117,7 +161,7 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
                 let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to: checklist)
                 let indexPath = checklist.indexPathForRow(at: buttonPosition)?.row
                 totalBathroomScore += bathroomValue[(indexPath)!]!
-                bathroomValue[indexPath!] = 1
+                bathroomSelected[indexPath!] = 1
             }
             sender.setImage(UIImage(named: "checked.png"), for: .normal)
         }
@@ -145,7 +189,27 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath)
-        // get the cell and then load the appropriate data in each cell of the picker view
+        let btn = cell.viewWithTag(3) as? UIButton
+        
+        if segmentTask.selectedSegmentIndex == 0{
+            if bedroomSelected[indexPath.row] == 0{
+            
+                btn?.setImage(UIImage(named: "unchecked.png"), for: .normal)
+            }
+            else{
+                btn?.setImage(UIImage(named: "checked.png"), for: .normal)
+            }
+        }
+        if segmentTask.selectedSegmentIndex == 1{
+            if bathroomSelected[indexPath.row] == 0{
+                
+                btn?.setImage(UIImage(named: "unchecked.png"), for: .normal)
+            }
+            else{
+                btn?.setImage(UIImage(named: "checked.png"), for: .normal)
+            }
+        }
+            // get the cell and then load the appropriate data in each cell of the picker view
         if(segmentTask.selectedSegmentIndex == 0){
             cell.textLabel?.text = bedRoomTasks[indexPath.row]
             
@@ -156,7 +220,10 @@ class ChecklistView : ViewController,UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("row selected")
+        
     }
+    
+    
+    
     
 }

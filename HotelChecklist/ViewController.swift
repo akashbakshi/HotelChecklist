@@ -15,16 +15,15 @@ var roomData = ["Room number"]; //Array that will store the room numbers
 
 var initLaunch:Bool = true //boolean to determine if it is the first time user laumches to load data
 
+var selRoom: Int = 0 // variable used to track index of which room is selected in the main page so we can do validation.
+var selInspector : Int = 0 // variable used to track index of which inspector is selected in the main page so we can do validation.
+
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var inspectorPicker: UIPickerView!
        @IBOutlet weak var roomPicker: UIPickerView!
     
-    var selRoom: Int = 0 // variable used to track index of which room is selected in the main page so we can do validation.
-    var selInspector : Int = 0 // variable used to track index of which inspector is selected in the main page so we can do validation.
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if(initLaunch){
             // if this is the first time the app loaded after being closed
             loadData() // load data to store the room number, inspector names and housekeeper names
@@ -142,7 +141,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if(pickerView == roomPicker){
             data = roomData[row]
         }
-        return NSAttributedString(string: data, attributes: [NSForegroundColorAttributeName:UIColor.init(red: 0.0/255.0, green: 245.0/255.0, blue: 255.0/255.0, alpha: 1.0)])
+        return NSAttributedString(string: data, attributes: [NSForegroundColorAttributeName:UIColor.init(red: 15.0/255.0, green: 15.0/255.0, blue: 15.0/255.0, alpha: 1.0)])
     }
     
     @IBAction func btnSettings(_ sender: Any) {
@@ -155,10 +154,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     @IBAction func btnStart(_ sender: UIButton) {
        // if the user hits the start button go to the checklist
+        if selRoom != 0 && selInspector != 0{
         let story = UIStoryboard(name: "Main", bundle: nil)
         let checklist = story.instantiateViewController(withIdentifier: "checklist") as! ChecklistView
         
         self.present(checklist, animated: true, completion: nil)
+        }
     }
     
    

@@ -199,7 +199,7 @@
 				TargetAttributes = {
 					B83FD5A61EEDC86B00D61BF3 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 25E73F4PN4;
+						DevelopmentTeam = 4KPAL6SCK4;
 						ProvisioningStyle = Automatic;
 					};
 					B83FD5BA1EEDC86B00D61BF3 = {
@@ -417,10 +417,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 25E73F4PN4;
+				DEVELOPMENT_TEAM = 4KPAL6SCK4;
 				INFOPLIST_FILE = HotelChecklist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.akashbakshi.HotelChecklist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akashbakshi.HotelChecklist1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -430,10 +430,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 25E73F4PN4;
+				DEVELOPMENT_TEAM = 4KPAL6SCK4;
 				INFOPLIST_FILE = HotelChecklist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.akashbakshi.HotelChecklist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akashbakshi.HotelChecklist1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
